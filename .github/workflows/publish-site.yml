@@ -22,7 +22,13 @@ jobs:
       - name: Expand website
         shell: bash
         run: |
+          set +e
           unzip -o site.zip -d .
+          unzip_status=$?
+          set -e
+          if [ "$unzip_status" -gt 1 ]; then
+            exit "$unzip_status"
+          fi
           rm site.zip
 
       - name: Publish expanded files

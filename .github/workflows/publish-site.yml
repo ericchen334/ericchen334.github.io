@@ -1,6 +1,7 @@
 name: Publish portfolio site
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
